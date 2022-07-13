@@ -14,7 +14,7 @@ public class QueryProcessor {
         } else if (query.contains("name")) {
            return "Infinity70Test3";
         } else {
-            return "";
+            return "Infinity70Test3";
         }
     }
 }
