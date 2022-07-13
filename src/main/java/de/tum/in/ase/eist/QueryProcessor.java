@@ -15,17 +15,17 @@ public class QueryProcessor {
                     "English poet, playwright, and actor, widely regarded as the greatest " +
                     "writer in the English language and the world's pre-eminent dramatist.";
         } else if (query.contains("which of the following numbers is the largest: ")) {
-            String list = query.replaceAll("which of the following numbers is the largest: ", "");
-            int[] array = Arrays.stream(list.split(", ")).mapToInt(Integer::parseInt).toArray();
-            if (array.length == 0) return "no number!";
-            int max = array[0];
-            for (int i : array) if (i > max) max = i;
+            String list = query.replaceAll("which of the following numbers is the largest:", ",");
+            String[] array = list.split(", ");
+            if (array.length < 1) return "no numbers!";
+            int max = Integer.parseInt(array[1]);
+            for (int i = 1; i < array.length; i++) if (Integer.parseInt(array[i]) > max) max = Integer.parseInt(array[i]);
             return String.valueOf(max);
         } else if (query.contains("what is ")) {
             String list = query.replaceAll("what is ", "");
-            int[] array = Arrays.stream(list.split(" plus ")).mapToInt(Integer::parseInt).toArray();
-            if (array.length < 2) return "no number!";
-            return String.valueOf(array[0] + array[1]);
+            String[] array = list.split(" ");
+            if (array.length < 4) return "no number!";
+            return String.valueOf(Integer.parseInt(array[1]) + Integer.parseInt(array[3]));
         } else {
             return "Infinity70";
         }
