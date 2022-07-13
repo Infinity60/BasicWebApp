@@ -30,4 +30,9 @@ class QueryProcessorTest {
 		}
 	}
 
+	@Test
+	void largestTest() {
+		String s = "which of the following numbers is the largest: 531, 277, 5, 12";
+		System.out.println(queryProcessor.process(s));
+	}
 }
