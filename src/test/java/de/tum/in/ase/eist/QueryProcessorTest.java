@@ -35,4 +35,10 @@ class QueryProcessorTest {
 		String s = "which of the following numbers is the largest: 531, 277, 5, 12";
 		System.out.println(queryProcessor.process(s));
 	}
+
+	@Test
+	void plusTest() {
+		String s = "what is 17 plus 14";
+		System.out.println(queryProcessor.process(s));
+	}
 }

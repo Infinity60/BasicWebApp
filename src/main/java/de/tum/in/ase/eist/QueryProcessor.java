@@ -9,6 +9,7 @@ public class QueryProcessor {
 
     public String process(String query) {
 		query = query.toLowerCase();
+        query = query.trim();
         if (query.contains("shakespeare")) {
             return "William Shakespeare (26 April 1564 - 23 April 1616) was an " +
                     "English poet, playwright, and actor, widely regarded as the greatest " +
@@ -20,6 +21,11 @@ public class QueryProcessor {
             int max = array[0];
             for (int i : array) if (i > max) max = i;
             return String.valueOf(max);
+        } else if (query.contains("what is ")) {
+            String list = query.replaceAll("what is ", "");
+            int[] array = Arrays.stream(list.split(" plus ")).mapToInt(Integer::parseInt).toArray();
+            if (array.length < 2) return "no number!";
+            return String.valueOf(array[0] + array[1]);
         } else {
             return "Infinity70";
         }
